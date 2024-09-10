@@ -132,7 +132,7 @@ fun Form(context: MainActivity, viewModel: UserViewModel) {
                 modifier = Modifier.fillMaxWidth(),
                 onValueChange = {
                     name.value = it
-                    isNameError.value = name.value.isEmpty()
+                    isNameError.value = name.value.trim().isEmpty()
 //                    nameErrorMessage.value = if (isNameError.value) "Name cannot be empty" else ""
                 },
                 label = {
@@ -158,7 +158,9 @@ fun Form(context: MainActivity, viewModel: UserViewModel) {
                 ),
                 modifier = Modifier.fillMaxWidth(),
                 onValueChange = {
-                    age.value = it
+                    if (it.all { char -> char.isDigit() } || it.isEmpty()) {
+                        age.value = it
+                    }
                     isAgeError.value = age.value.isEmpty()
                 },
                 label = {
@@ -223,7 +225,7 @@ fun Form(context: MainActivity, viewModel: UserViewModel) {
                 maxLines = 2,
                 onValueChange = {
                     address.value = it
-                    isAddressError.value = address.value.isEmpty()
+                    isAddressError.value = address.value.trim().isEmpty()
                 },
                 label = {
                     Text(text = stringResource(id = R.string.address))
@@ -244,22 +246,22 @@ fun Form(context: MainActivity, viewModel: UserViewModel) {
             val errorDob = stringResource(id = R.string.error_dob)
             val errorAddress = stringResource(id = R.string.error_address)
             Button(onClick = {
-                isNameError.value = name.value.isEmpty()
+                isNameError.value = name.value.trim().isEmpty()
                 nameErrorMessage.value = if (isNameError.value) errorName else ""
-                isAgeError.value = age.value.isEmpty()
+                isAgeError.value = age.value.trim().isEmpty()
                 ageErrorMessage.value = if (isAgeError.value) errorAge else ""
                 isDateNotSelected.value = dob.value == dateFormat
                 dobErrorMessage.value = if (isDateNotSelected.value) errorDob else ""
-                isAddressError.value = address.value.isEmpty()
+                isAddressError.value = address.value.trim().isEmpty()
                 addressErrorMessage.value = if (isAddressError.value) errorAddress else ""
                 if(!isNameError.value && !isAgeError.value && !isDateNotSelected.value && !isAddressError.value){
                     //calling function in viewmodel for inserting values in database
                     viewModel.insertBooking(
                         UserEntity(
-                            name = name.value,
+                            name = name.value.trim(),
                             age = age.value,
                             dob = dob.value,
-                            address = address.value
+                            address = address.value.trim()
                         )
                     )
                 }
