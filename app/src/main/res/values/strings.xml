@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">UserDetailsForm</string>
+    <string name="submit">Submit</string>
+    <string name="address">Address</string>
+    <string name="dob">Date of birth</string>
+    <string name="age">Age</string>
+    <string name="name">Name</string>
+    <string name="fill_your_details">Fill your details</string>
+    <string name="success_message">User data successfully saved</string>
+    <string name="error_message">Something went wrong</string>
+    <string name="error_name">Name cannot be empty</string>
+    <string name="error_age">"Age cannot be empty"</string>
+    <string name="error_dob">"Please select date of birth"</string>
+    <string name="error_address">"Address cannot be empty"</string>
+    <string name="date_format">yyyy-mm-dd</string>
+</resources>
