@@ -203,9 +203,9 @@ fun Form(context: MainActivity, viewModel: UserViewModel) {
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 if (isDateNotSelected.value) {
-                    Text(text = stringResource(id = R.string.date_format), color = colorResource(id = R.color.black_secondary))
+                    Text(text = stringResource(id = R.string.date_format))
                 } else {
-                    Text(text = dob.value, color = colorResource(id = R.color.black_primary))
+                    Text(text = dob.value)
                 }
             }
             if (isDateNotSelected.value) {
@@ -268,7 +268,7 @@ fun Form(context: MainActivity, viewModel: UserViewModel) {
             }) {
                 Text(
                     text = stringResource(id = R.string.submit),
-                    color = Color.White,
+                    color = colorScheme.background,
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier.background(colorScheme.primary),
                     fontSize = 20.sp
